@@ -57,9 +57,9 @@ androidComponents.onVariants { variant ->
         val variantLowered = variant.name.lowercase()
         val variantCapped = variant.name.capitalizeUS()
         val buildTypeLowered = variant.buildType?.lowercase()
-        val supportedAbis = abiList.map {
+        val supportedAbis = abiList.joinToString(" ") {
             abiMap[it] ?: error("unsupported abi $it")
-        }.joinToString(" ")
+        }
 
         val moduleDir = layout.buildDirectory.file("outputs/module/$variantLowered")
         val zipFileName =
